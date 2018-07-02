@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using Xunit;
 
 namespace UnitTestProject.Tests
@@ -18,11 +14,11 @@ namespace UnitTestProject.Tests
             _map3x3 = new Map(3, 3);
 
             _pathLocations3 = new MapLocation[]
-              {
+            {
                 new MapLocation(0, 1, _map3x3),
                 new MapLocation(1, 1, _map3x3),
-                new MapLocation(2, 1, _map3x3),
-              };
+                new MapLocation(2, 1, _map3x3)
+            };
 
             _path3 = new Path(_pathLocations3);
         }
@@ -39,6 +35,34 @@ namespace UnitTestProject.Tests
         {
             var target = _path3;
             Assert.False(target.IsOnPath(new MapLocation(0, 0, _map3x3)));
+        }
+
+        //        [Fact]
+        //        public void GetLocationAtBeginningOfPath()
+        //        {
+        //            var target = _path3;
+        //            Assert.Equal(_pathLocations3.First(), target.GetLocationAt(0));
+        //        }
+        //
+        //        [Fact]
+        //        public void GetLocationAtEndOfPath()
+        //        {
+        //            var target = _path3;
+        //            Assert.Equal(_pathLocations3.Last(), target.GetLocationAt(_pathLocations3.Length - 1));
+        //        }
+
+        [Fact]
+        public void GetLocationNotOnPath()
+        {
+            var target = _path3;
+            Assert.Null(target.GetLocationAt(_pathLocations3.Length + 1));
+        }
+
+        [Fact]
+        public void GetLocationAtOneStepAfterEndOfPath()
+        {
+            var target = _path3;
+            Assert.Null(target.GetLocationAt(_pathLocations3.Length));
         }
     }
 }

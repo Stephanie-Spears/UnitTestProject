@@ -1,10 +1,4 @@
 ﻿using Xunit;
-using UnitTestProject;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace UnitTestProject.Tests
 {
@@ -22,7 +16,6 @@ namespace UnitTestProject.Tests
         {
             var map = new Map(3, 3);
             var target = new MapLocation(0, 0, map);
-
             Assert.True(target.InRangeOf(new MapLocation(0, 1, map), 1));
         }
     }
